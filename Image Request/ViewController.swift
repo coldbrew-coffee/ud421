@@ -21,7 +21,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let imageURL = URL(string: "http://i.ytimg.com/vi/P-Kq9edwyDs/maxresdefault.jpg")
+    let imageURL = URL(string: "https://i.ytimg.com/vi/P-Kq9edwyDs/maxresdefault.jpg")
     let task = URLSession.shared.dataTask(with: imageURL!) { (data, response, error) in
       if error == nil {
         let image = UIImage(data: data!)

@@ -1,0 +1,36 @@
+//
+//  ViewController.swift
+//  ImageRequest
+//
+//  Created by Jarrod Parkes on 11/3/15.
+//  Copyright © 2015 Udacity. All rights reserved.
+//
+
+import UIKit
+
+// MARK: - ViewController: UIViewController
+
+class ViewController: UIViewController {
+  
+  // MARK: Outlets
+  
+  @IBOutlet weak var imageView: UIImageView!
+  
+  // MARK: Life Cycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let imageURL = URL(string: "http://i.ytimg.com/vi/P-Kq9edwyDs/maxresdefault.jpg")
+    let task = URLSession.shared.dataTask(with: imageURL!) { (data, response, error) in
+      if error == nil {
+        let image = UIImage(data: data!)
+        performUIUpdatesOnMain {
+          self.imageView.image = image
+        }
+      }
+    }
+    
+    task.resume()
+  }
+}
